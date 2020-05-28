@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul id="ola">
+      
+        
+    </ul>
+
+    <script>
+          var nomes = ["Diego", "Gabriel", "Lucas"];
+
+          for(var i in nomes){
+                var linkElemneto = document.createElement('li');
+                var text = document.createTextNode(nomes[i]);
+                linkElemneto.appendChild(text);
+                var containerElement = document.querySelector('#ola');
+                containerElement.appendChild(linkElemneto);
+            }
+    </script>
+</body>
+</html>

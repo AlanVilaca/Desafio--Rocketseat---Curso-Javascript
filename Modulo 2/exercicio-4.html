@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" name="nome">
+    <button onClick="adicionar()">Adicionar</button>
+    
+    <ul id="ola">
+      
+        
+    </ul>
+    
+
+    <script>
+
+        var nomes = ["Diego", "Gabriel", "Lucas"];
+        function adicionar(){
+
+            //inputElemento se conecta com o input
+            var inputElemento = document.querySelector('input[name=nome]');
+            
+            //text recebe o dado digitado no input
+            var text = inputElemento.value;
+
+            //adicionamos o dado digitado na lista 'nomes'
+            nomes.push(text);
+
+            //apagamos o que foi digitado no input
+            inputElemento.value = "";
+            listarNomes();
+        }  
+        
+
+        function listarNomes(){
+
+            var ulElement = document.querySelector("ul");
+            //Com o inner.HTML faz a lista não repetir os nomes caso digitado
+            ulElement.innerHTML = "";
+
+            //percorre cada nome digitado na lista
+            for(var i in nomes){
+                var linkElemneto = document.createElement('li');
+                var text = document.createTextNode(nomes[i]);
+                linkElemneto.appendChild(text);
+                var containerElement = document.querySelector('#ola');
+                containerElement.appendChild(linkElemneto);
+            }
+ 
+        }
+       
+    </script>
+</body>
+</html>
