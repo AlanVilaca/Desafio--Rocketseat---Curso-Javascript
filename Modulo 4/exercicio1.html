@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    
+    <input type="text" name="nome" placeholder="Please digit your age">
+    <button class="botao"> Enviar</button>
+
+
+<script>
+
+    var inputElement = document.querySelector('input');
+    var buttonElement = document.querySelector('button.botao');
+
+    buttonElement.onclick = function(){
+        var age = inputElement.value;
+
+        var idade = function(age){
+            return new Promise(function(resolve, reject){
+                
+                if(age>17){
+                    resolve("Maior q 18");
+                }else{
+                    reject("Menor q 18");
+                }
+            }
+            );        
+        }
+
+        idade(age)
+            .then(function(response){
+                console.log(response);
+                
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+    }
+
+
+</script>
+</body>
+</html>

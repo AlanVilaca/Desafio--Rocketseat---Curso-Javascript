@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    
+    <input type="text">
+    <button>Enviar</button>
+
+    <ul>
+        
+    </ul>
+
+    <p></p>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+     
+    var inputElement = document.querySelector('input');
+    var buttonElement = document.querySelector('button');
+    
+    buttonElement.onclick = function(){
+        
+        var lista = document.querySelector('ul');
+        lista.innerHTML = '';
+        var repo = document.createElement('li');
+        var text = document.createTextNode('Carregando...');
+        repo.appendChild(text);
+        lista.appendChild(repo);
+           
+        axios.get('https://api.github.com/users/'+inputElement.value+'/repos')
+        .then(function(response){
+            var erro = document.querySelector("li");
+            erro.remove();
+            
+
+            for (var pos in response.data){
+                
+                lista = document.querySelector('ul');
+                repo = document.createElement('li');
+                text = document.createTextNode(response.data[pos].name);
+                repo.appendChild(text);
+                lista.appendChild(repo);
+            
+            }
+        })
+        .catch(function(error){
+
+            var paragrafo = document.querySelector('p');
+            paragrafo.innerHTML='';
+            var erro = document.querySelector("li");
+            erro.remove();
+            var textp = document.createTextNode('ERROR: O usuário não existe no Github');
+            paragrafo.appendChild(textp);
+        })
+
+    }
+    
+    
+    </script>
+</body>
+</html>

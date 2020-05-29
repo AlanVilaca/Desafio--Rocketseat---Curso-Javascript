@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text">
+    <button>Enviar</button>
+
+    <ul>
+        
+    </ul>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+     
+    var inputElement = document.querySelector('input');
+    var buttonElement = document.querySelector('button');
+    
+    buttonElement.onclick = function(){
+            axios.get('https://api.github.com/users/'+inputElement.value+'/repos')
+        .then(function(response){
+            for (var pos in response.data){
+
+                var lista = document.querySelector('ul');
+                var repo = document.createElement('li');
+                var text = document.createTextNode(response.data[pos].name);
+                repo.appendChild(text);
+                lista.appendChild(repo);
+            
+            }
+        })
+        .catch(function(error){
+            console.warn(error);
+        })
+
+    }
+    
+    
+    </script>
+</body>
+</html>
